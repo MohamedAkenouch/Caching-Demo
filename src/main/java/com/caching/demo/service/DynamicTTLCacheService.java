@@ -25,6 +25,7 @@ public class DynamicTTLCacheService {
         boolean keyExists = redisTemplate.hasKey(key);
         if (keyExists) {
             Map<String, Object> cacheObject = (Map<String, Object>) redisTemplate.opsForValue().get(key);
+            cacheObject.put("data", value);
             adjustTTL(key, cacheObject);
         } else {
             Map<String, Object> cacheObject = new HashMap<>();
