@@ -16,12 +16,15 @@ public class TodoService {
         return todoRepository.findAll();
     }
 
-    public Todo addTodo(Todo todo){
-        todoRepository.save(todo);
-        return todo;
+    public Todo saveOrUpdateBook(Todo todo) {
+        return todoRepository.save(todo);
     }
 
-    public Todo getTodo(Long id){
+    public Todo getTodoById(Long id){
         return todoRepository.findById(id).orElse(null);
+    }
+
+    public void deleteBook(Long id) {
+        todoRepository.deleteById(id);
     }
 }
